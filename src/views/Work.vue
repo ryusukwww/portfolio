@@ -2,7 +2,7 @@
     <div class="uk-container uk-container-large uk-margin uk-margin-top">
         <!--タイトル-->
         <div class="uk-text-center">
-            <img data-src="images/work.png" width="200" height="200" alt="" uk-img>
+            <img src="@/assets/work.png" width="200" height="200" alt="">
             <p>職務経歴</p>
         </div>
         <!--カード1-->

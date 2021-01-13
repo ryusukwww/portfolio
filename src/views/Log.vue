@@ -2,7 +2,7 @@
     <div class="uk-container uk-container-large uk-margin uk-margin-top">
         <!--タイトル-->
         <div class="uk-text-center">
-            <img src="@/assets/log.png" width="200" height="200" alt="" uk-img>
+            <img src="@/assets/log.png" width="200" height="200" alt="">
             <p>学習の記録</p>
         </div>
         <!--追加ログ表示セクション-->

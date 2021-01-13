@@ -2,7 +2,7 @@
     <div class="uk-container uk-container-large uk-margin uk-margin-top">
         <!--タイトル-->
         <div class="uk-text-center">
-            <img src="@/assets/portfolio.png" width="200" height="200" alt="" uk-img>
+            <img src="@/assets/portfolio.png" width="200" height="200" alt="">
             <p>ポートフォリオ</p>
             <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button uk-sort-label" :class="[ all === true ? 'uk-sort-label' : 'uk-sort-click']" @click="sortCategoryReload">ALL</button>
             <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ wordpress === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategoryWordpress">WODRPRESS</button>

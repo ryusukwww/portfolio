@@ -15,7 +15,7 @@
                       <li><a href="./work">WORK</a></li>
                       <li><a href="/portfolio">PORTFOLIO</a></li>
                       <li><a href="/log">LOG</a></li>
-                      <li><a href="https://github.com/ryusukwww/git_practice" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+                      <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
                   </ul>
               </div>
           </nav>
@@ -45,7 +45,7 @@
                       <li><a href="./work">WORK</a></li>
                       <li><a href="/portfolio">PORTFOLIO</a></li>
                       <li><a href="/log">LOG</a></li>
-                  <li><a href="https://github.com/ryusukwww/git_practice" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+                  <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
               </ul>
           </div>
       </div>
