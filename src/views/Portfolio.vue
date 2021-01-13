@@ -20,9 +20,9 @@
             <div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">ポートフォリオサイト</h3>
-                        <span class="uk-label">VUE.JS ★★☆☆☆</span>
-                        <span class="uk-label">UIKIT ★★★★☆</span>
-                        <span class="uk-label">HTML/CSS ★★★☆☆</span>
+                        <span class="uk-label uk-margin-small-right">VUE.JS ★★☆☆☆</span>
+                        <span class="uk-label uk-margin-small-right">UIKIT ★★★★☆</span>
+                        <span class="uk-label uk-margin-small-right">HTML/CSS ★★★☆☆</span>
                     <p>JavascriptとVue.jsの勉強のためにポートフォリオサイトを作成しました。Vue.jsの基本文法を学びつつ、SPAサイトを作成しました。また、バージョン管理をGITを活用して行いました。</p>
                     <a href="/" class="uk-button uk-button-text"></a>
                 </div>
@@ -37,9 +37,9 @@
             <div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">#ならじかん</h3>
-                        <span class="uk-label">WORDPRESS ★★★★☆</span>
-                        <span class="uk-label">HTML/CSS ★★★☆☆</span>
-                        <span class="uk-label">Illustrator ★★★☆☆</span>
+                        <span class="uk-label uk-margin-small-right">WORDPRESS ★★★★☆</span>
+                        <span class="uk-label uk-margin-small-right">HTML/CSS ★★★☆☆</span>
+                        <span class="uk-label uk-margin-small-right">Illustrator ★★★☆☆</span>
                     <p>新型コロナウイルス禍でもファン、スークホルダーとコミュニケーションを行う事を目的にWeb企画を立案。奈良の企業様と共に、コロナ禍でもオンラインで体験できるコンテンツをコーティングいたしました。</p>
                     <a href="http://naraclub.jp/homegame/narajikan-project/" class="uk-button uk-button-text" target="_blank" rel="noopener noreferrer"></a>
                 </div>
@@ -54,9 +54,9 @@
             <div>
                 <div class="uk-card-body" >
                     <h3 class="uk-card-title">N.GO</h3>
-                        <span class="uk-label">WORDPRESS ★★★★☆</span>
-                        <span class="uk-label">HTML/CSS ★★★☆☆</span>
-                        <span class="uk-label">Illustrator ★★★☆☆</span>
+                        <span class="uk-label uk-margin-small-right">WORDPRESS ★★★★☆</span>
+                        <span class="uk-label uk-margin-small-right">HTML/CSS ★★★☆☆</span>
+                        <span class="uk-label uk-margin-small-right">Illustrator ★★★☆☆</span>
                     <p>5G時代の全く新しい観戦体験アプリケーション「N.GO」の特設サイトです。</p>
                     <a href="http://naraclub.jp/homegame/n-go" class="uk-button uk-button-text" target="_blank" rel="noopener noreferrer"></a>
                 </div>
@@ -147,6 +147,28 @@ export default {
 </script>
 
 <style scoped>
+
+.uk-card {
+    position: relative;
+    z-index: 1; 
+}
+
+.uk-card:hover {
+    filter:alpha(opacity=70);
+    -ms-filter: "alpha(opacity=70)";
+    -moz-opacity:0.9;
+    -khtml-opacity: 0.9;
+    opacity:0.9;
+    zoom:1;
+}
+.uk-card a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; 
+}
 
 .uk-sort-label{
     background: #fff;
