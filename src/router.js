@@ -13,5 +13,4 @@ export default new Router({
     mode : 'history',
     routes: [{path:'/',component: Top},{path:'/profile',component: Profile},{path:'/work',component: Work},{path:'/portfolio',component: Portfolio},{path:'/log',component: Log}],
     base: process.env.BASE_URL,
-  routes
 });
