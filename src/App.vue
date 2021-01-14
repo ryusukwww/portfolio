@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <header>
       <!--ナビゲーションPC-->
       <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
