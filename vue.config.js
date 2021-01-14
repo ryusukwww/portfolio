@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    publicPath: '/portfolio',
+    publicPath: './',
     outputDir: 'docs',
     filenameHashing: false,
     productionSourceMap: false,
