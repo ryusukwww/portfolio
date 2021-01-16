@@ -51,8 +51,14 @@
       </div>
     </header>
     <main>
-      <router-view></router-view>
+         <router-view></router-view>
     </main>
   
   </div>
 </template>
+
+<style>
+    .uk-offcanvas-bar {
+    background: #003e7f;
+    }
+</style>

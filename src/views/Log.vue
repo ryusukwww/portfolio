@@ -9,14 +9,12 @@
         <div v-for="log in logs" v-bind:key="log.content">
             <h3 class="uk-card-title">{{log.title}}</h3>
             <p>{{log.content}}</p>
-            <p v-bind="showDate"> 記録日 : {{today}}</p>
             <hr>
         </div>
         <!--firebaseデータ表示セクション-->
         <div v-for="getlog in getlogs" v-bind:key="getlog.fields.today.stringValue">
             <h3 class="uk-card-title"> {{getlog.fields.addLogTitle.stringValue}}</h3>
             <p> {{getlog.fields.addLogContent.stringValue}}</p>
-            <p> 記録日 : {{getlog.fields.today.stringValue}}</p>
             <hr>
         </div>  
         <!--ログ入力フォーム-->
