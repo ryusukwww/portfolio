@@ -70,6 +70,7 @@ export default {
     data : function(){
         return {
             // PORTFOLIOページのタグソート機能Data
+            btnText: '',
             wordpress : true,
             vuejs : true,
             htmlcss : true,
@@ -146,7 +147,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 .uk-card {
     position: relative;
