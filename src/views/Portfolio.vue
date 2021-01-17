@@ -4,12 +4,12 @@
         <div class="uk-text-center">
             <img src="@/assets/portfolio.png" width="200" height="200" alt="">
             <p>ポートフォリオ</p>
-            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button uk-sort-label" :class="[ all === true ? 'uk-sort-label' : 'uk-sort-click']" @click="sortCategoryReload">ALL</button>
-            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ wordpress === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategoryWordpress">WODRPRESS</button>
-            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ vuejs === true ? 'uk-sort-label' : 'uk-sort-click']"  @click ="sortCategoryVuejs">vue.js</button>
-            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ htmlcss === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategoryHtmlcss">HTML/CSS</button>
-            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ uikit === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategoryUikit">UIKIT</button>
-            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ illustrator === true ? 'uk-sort-label' : 'uk-sort-click']"  @click ="sortCategoryIllustrator">Illustrator</button>
+            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ all === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategory('all')">ALL</button>
+            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ wordpress === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategory('wordpress')">WODRPRESS</button>
+            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ vuejs === true ? 'uk-sort-label' : 'uk-sort-click']"  @click ="sortCategory('vuejs')">vue.js</button>
+            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ htmlcss === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategory('htmlcss')">HTML/CSS</button>
+            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ uikit === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategory('uikit')">UIKIT</button>
+            <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ illustrator === true ? 'uk-sort-label' : 'uk-sort-click']"  @click ="sortCategory('illustrator')">Illustrator</button>
         </div>
         <!--カード1-->
         <div v-if="wordpress && illustrator" class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
@@ -70,7 +70,7 @@ export default {
     data : function(){
         return {
             // PORTFOLIOページのタグソート機能Data
-            btnText: '',
+            sample : false,
             wordpress : true,
             vuejs : true,
             htmlcss : true,
@@ -82,67 +82,62 @@ export default {
 
     methods : {
 
-        //PORTFOLIOページのタグソート機能 WordPress
-        sortCategoryWordpress : function (){ 
-            this.wordpress = !this.wordpress ? true : false ; 
-            this.all =  true;
-            this.vuejs = true;
-            this.htmlcss = true;
-            this.uikit = true;
-            this.illustrator = true;
+        //タグソートテスト : 引数のテキストをデータと勘違いさせて表示できるかテスト
+        sortCategory: function(tag){
+            if(tag == 'all'){
+                this.all = !this.all ? true : false ;
+                this.wordpress = true ; 
+                this.vuejs = true ; 
+                this.htmlcss = true ; 
+                this.uikit = true ; 
+                this.illustrator = true ; 
+            }
+            if(tag == 'wordpress'){
+                this.wordpress = !this.wordpress ? true : false ; 
+                this.all =  true;
+                this.vuejs = true;
+                this.htmlcss = true;
+                this.uikit = true;
+                this.illustrator = true;
+                }
+            if(tag == 'vuejs'){
+                this.vuejs = !this.vuejs ? true : false ; 
+                this.all =  true;
+                this.wordpress = true;
+                this.htmlcss = true;
+                this.uikit = true;
+                this.illustrator = true;
+            }
+            if(tag == 'htmlcss'){
+                this.htmlcss = !this.htmlcss ? true : false ; 
+                this.all =  true;
+                this.wordpress = true;
+                this.vuejs = true;
+                this.uikit = true;
+                this.illustrator = true;
+            }
+            if(tag == 'uikit'){
+                this.uikit = !this.uikit ? true : false ; 
+                this.all =  true;
+                this.wordpress = true;
+                this.vuejs = true;
+                this.htmlcss = true;
+                this.illustrator = true;
+            }
+            if( tag == 'illustrator'){
+                this.illustrator = !this.illustrator ? true : false ; 
+                this.uikit = !this.uikit ? true : false ; 
+                this.all =  true;
+                this.wordpress = true;
+                this.vuejs = true;
+                this.htmlcss = true;
+                this.uikit = true;
+            }
+            else{
+                //何もしない
+            }
         },
 
-        //PORTFOLIOページのタグソート機能 vuejs
-        sortCategoryVuejs : function (){ 
-            this.vuejs = !this.vuejs ? true : false ; 
-            this.all =  true;
-            this.wordpress = true;
-            this.htmlcss = true;
-            this.uikit = true;
-            this.illustrator = true;
-        },
-
-        //PORTFOLIOページのタグソート機能 Html/css
-        sortCategoryHtmlcss : function (){ 
-            this.htmlcss = !this.htmlcss ? true : false ; 
-            this.all =  true;
-            this.wordpress = true;
-            this.vuejs = true;
-            this.uikit = true;
-            this.illustrator = true;
-        },
-
-        //PORTFOLIOページのタグソート機能 UIKIT
-        sortCategoryUikit : function (){ 
-            this.uikit = !this.uikit ? true : false ; 
-            this.all =  true;
-            this.wordpress = true;
-            this.vuejs = true;
-            this.htmlcss = true;
-            this.illustrator = true;
-        },
-
-        //PORTFOLIOページのタグソート機能 Illustrator
-        sortCategoryIllustrator : function (){ 
-            this.illustrator = !this.illustrator ? true : false ; 
-            this.uikit = !this.uikit ? true : false ; 
-            this.all =  true;
-            this.wordpress = true;
-            this.vuejs = true;
-            this.htmlcss = true;
-            this.uikit = true;
-        },  
-
-        //PORTFOLIOページのタグソート機能 ALL
-        sortCategoryReload : function (){ 
-            this.wordpress = true ; 
-            this.vuejs = true ; 
-            this.htmlcss = true ; 
-            this.uikit = true ; 
-            this.illustrator = true ; 
-            this.all = false ;
-        },
-        
     } //methodsの締め
 }
 </script>

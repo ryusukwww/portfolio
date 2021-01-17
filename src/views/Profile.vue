@@ -1,6 +1,6 @@
 <template>
-    <div class="uk-flex uk-flex-center uk-flex-middle uk-background-cover " uk-height-viewport="expand: true" data-src="images/-back-ground.png" uk-img>
-        <div class="uk-text-center uk-margin-large uk-margin-xlarge-right uk-margin-xlarge-left">
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-background-cover " uk-height-viewport="expand: true" uk-img>
+        <div class="uk-text-center uk-margin-large-top uk-margin-xlarge-right uk-margin-xlarge-left">
             <p><img class="uk-border-circle" src="@/assets/pofile.jpg" width="150" uk-img></p>
             <img src="@/assets/name.png" width="400" height="200" alt="">
             <p>
