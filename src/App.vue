@@ -50,8 +50,12 @@
           </div>
       </div>
     </header>
-    <main>
-        <router-view></router-view>
+        <main>
+        <transition appear>
+            <div>
+                <router-view></router-view>
+            </div>
+        </transition>
     </main>
   
   </div>
@@ -61,4 +65,11 @@
     .uk-offcanvas-bar {
     background: #003e7f;
     }
+
+    .v-enter-active, .v-leave-active {
+    transition: opacity 1s;
+    }
+    .v-enter, .v-leave-to {
+    opacity: 0;
+}
 </style>
