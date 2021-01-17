@@ -70,7 +70,6 @@ export default {
     data : function(){
         return {
             // PORTFOLIOページのタグソート機能Data
-            sample : false,
             wordpress : true,
             vuejs : true,
             htmlcss : true,
@@ -84,7 +83,7 @@ export default {
 
         //タグソートテスト : 引数のテキストをデータと勘違いさせて表示できるかテスト
         sortCategory: function(tag){
-            if(tag == 'all'){
+            if( tag == 'all'){
                 this.all = !this.all ? true : false ;
                 this.wordpress = true ; 
                 this.vuejs = true ; 
@@ -92,7 +91,7 @@ export default {
                 this.uikit = true ; 
                 this.illustrator = true ; 
             }
-            if(tag == 'wordpress'){
+            if( tag == 'wordpress'){
                 this.wordpress = !this.wordpress ? true : false ; 
                 this.all =  true;
                 this.vuejs = true;
@@ -100,7 +99,7 @@ export default {
                 this.uikit = true;
                 this.illustrator = true;
                 }
-            if(tag == 'vuejs'){
+            if( tag == 'vuejs'){
                 this.vuejs = !this.vuejs ? true : false ; 
                 this.all =  true;
                 this.wordpress = true;
@@ -108,7 +107,7 @@ export default {
                 this.uikit = true;
                 this.illustrator = true;
             }
-            if(tag == 'htmlcss'){
+            if( tag == 'htmlcss'){
                 this.htmlcss = !this.htmlcss ? true : false ; 
                 this.all =  true;
                 this.wordpress = true;
@@ -116,7 +115,7 @@ export default {
                 this.uikit = true;
                 this.illustrator = true;
             }
-            if(tag == 'uikit'){
+            if( tag == 'uikit'){
                 this.uikit = !this.uikit ? true : false ; 
                 this.all =  true;
                 this.wordpress = true;
