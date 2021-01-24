@@ -8,10 +8,10 @@
                 現在は奈良県にあるサッカーチームに所属し、Web企画・デザイン・コーディングを行なっています。<br>
                 趣味はフットサルと漫画を読む事です。よろしくお願いします。
             </p> 
-            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">WORDPRESS 3年</span>
-            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">HTML/CSS 3年</span>
-            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">UIKIT 1年</span>
-            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">Javascript 1ヶ月</span>
+            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">WORDPRESS 4年</span>
+            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">HTML/CSS 4年</span>
+            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">CSSFW 3年</span>
+            <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">Javascript 3ヶ月</span>
             <span class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-sort-label">vue.js 1ヶ月</span>
         </div>
     </div>
