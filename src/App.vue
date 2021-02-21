@@ -3,7 +3,7 @@
     <header>
       <!--ナビゲーションPC-->
       <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-          <nav class="uk-navbar-container uk-navbar uk-visible@m">
+          <nav class="uk-navbar-container uk-visible@m " uk-navbar="mode:click">
               <div class="uk-navbar-left">
                   <ul class="uk-navbar-nav uk-margin-right">
                       <li><a href="/">NAKAMURA RYUSUKE</a></li>
@@ -14,7 +14,15 @@
                       <li><a href="./profile">PROFILE</a></li>
                       <li><a href="./work">WORK</a></li>
                       <li><a href="/portfolio">PORTFOLIO</a></li>
-                      <li><a href="/log">LOG</a></li>
+                      <li>
+                        <a href="#">▼APP</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/log">LOG</a></li>
+                                    <li><a href="/Calender">Clender</a></li>
+                                </ul>
+                            </div>
+                      </li>  
                       <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
                   </ul>
               </div>
@@ -23,7 +31,7 @@
 
       <!--ナビゲーションSP-->
       <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-          <nav class="uk-navbar-container uk-navbar uk-hidden@m" >
+          <nav class="uk-navbar-container uk-navbar uk-hidden@m">
               <div class="uk-navbar-left">
                   <ul class="uk-navbar-nav uk-margin-right">
                       <li><a href="/">NAKAMURA RYUSUKE</a></li>
@@ -44,8 +52,10 @@
                       <li><a href="./profile">PROFILE</a></li>
                       <li><a href="./work">WORK</a></li>
                       <li><a href="/portfolio">PORTFOLIO</a></li>
+                      <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+                    <li class ="uk-nav-header">APP</li>
                       <li><a href="/log">LOG</a></li>
-                  <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+                      <li><a href="/Calender">Clender</a></li> 
               </ul>
           </div>
       </div>
