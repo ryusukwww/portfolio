@@ -19,7 +19,7 @@
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li><a href="/log">LOG</a></li>
-                                    <li><a href="/Calender">Clender</a></li>
+                                    <li><a href="/Calender">CALENDER</a></li>
                                 </ul>
                             </div>
                       </li>  

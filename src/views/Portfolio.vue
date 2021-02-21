@@ -3,7 +3,7 @@
         <!--タイトル-->
         <div class="uk-text-center">
             <img src="@/assets/portfolio.png" width="200" height="200" alt="">
-            <p>ポートフォリオ</p>
+            <p>ポートフォリオ : タグのソートをjavascriptで作成しました。</p>
             <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ all === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategory('all')">ALL</button>
             <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ htmlcss === true ? 'uk-sort-label' : 'uk-sort-click']" @click ="sortCategory('htmlcss')">HTML/CSS</button>
             <button class="uk-margin-small-right uk-margin-samll-bottom uk-label uk-button" :class="[ javascript === true ? 'uk-sort-label' : 'uk-sort-click']"  @click ="sortCategory('javascript')">javascript</button>

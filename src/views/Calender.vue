@@ -5,24 +5,26 @@
             <img src="@/assets/calender.png" width="200" height="200" alt="">
             <p>年と月を記入するとカレンダーが表示されます。</p>
             <!--カレンダー表示-->
-            <h2 class="calendar-title"><span id="js-year"></span>年 <span id="js-month"></span>月</h2>
-            <table class="calendar-table">
-                <thead>
-                    <tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
-                    {{tableBody}}
-                </thead>
-                <tbody id="js-calendar-body"></tbody>
-            </table>
+            <div v-show="showCalenderBtn">
+                <h2> {{currentYear}} / {{currentMonth}}</h2>
+                <table class="calendar-table">
+                    <thead>
+                        <tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
+                    </thead>
+                    <tbody v-html="tableBody"></tbody>
+                </table>
+            </div>
             <!--ボタン-->
-            <div class="forms uk-container uk-container-xsmall">
+            <div class="forms uk-container uk-container-xsmall uk-margin-top">
                 <div class="uk-margin" >
-                    <input id="year" class="uk-input" placeholder="西暦(年)を入力してください" v-model="currentYear">
+                    <input id="year" class="uk-input" placeholder="年(西暦)を入力してください" v-model="currentYear">
                 </div>
             <div class="uk-margin" >
                 <input id="month" class="uk-input" placeholder="月を入力してください" v-model="currentMonth">
             </div>
             <div class="forms uk-container uk-container-xsmall">
-                <button @click="calendarBody" type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">決定</button>
+                <button @click="calendarBody" type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">カレンダー表示</button>
+
             </div>
         </div>
     </div>
@@ -51,19 +53,26 @@ export default {
             textTd : '',
             td:'',
             tbody : '',
+            showCalenderBtn : false,
         }
     },
 
     methods : {
-        
+
         calendarBody : function(){
+
+            this.showCalenderBtn = true;
+
             this.todayYMFlag = this.today.getFullYear() === this.currentYear && this.today.getMonth() === this.currentMonth ? true : false; // 本日の年と月が表示されるカレンダーと同じか判定
-            this.startDate = new Date(this.currentYear, this.currentMonth -1, 1); // その月の最初の日の情報を取得
-            this.endDate  = new Date(this.currentYear, this.currentMonth -1, 0); // その月の最後の日の情報を取得
-            this.startDay = this.startDate.getDay();// その月の最初の日の曜日を取得 
-            this.endDay = this.endDate.getDate();// その月の最後の日の曜日を取得 
+            this.startDate = new Date(this.currentYear, this.currentMonth -1, 1); // その月の最初の日の情報を取得 
+            this.endDate  = new Date(this.currentYear, this.currentMonth, 0); // その月の最後の日の情報を取得 
+            this.startDay = this.startDate.getDay();// その月の最初の日の曜日を取得 (日:0,月:1,火:2,水:3,木:4,金:5,土:6)
+            this.endDay = this.endDate.getDate();// その月の最後の日を取得
+
+            this.textDate = 1;
 
             for (var row = 0; row < 6; row++){
+                this.tr = '<tr>';
 
                 for (var col = 0; col < 7; col++) {
                 
@@ -107,8 +116,5 @@ export default {
         line-height: 65px;
         font-size: 50px;
         font-family: 'Sriracha', cursive;
-        }
-    .is-today {
-        color: red;
         }
 </style>

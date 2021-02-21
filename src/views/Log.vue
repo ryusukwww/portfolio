@@ -3,7 +3,7 @@
         <!--タイトル-->
         <div class="uk-text-center">
             <img src="@/assets/log.png" width="200" height="200" alt="">
-            <p>学習の記録</p>
+            <p>学習の記録 : axiosとapi通信して学習の記録を残します。</p>
         </div>
         <!--追加ログ表示セクション-->
         <div v-for="log in logs" v-bind:key="log.content">
