@@ -4,7 +4,7 @@
             <!--タイトル-->
             <img src="@/assets/calender.png" width="200" height="200" alt="">
             <p>年と月を記入するとカレンダーが表示されます。</p>
-            <!--カレンダー表示-->
+            <!--カレンダー-->
             <div v-show="showCalenderBtn">
                 <h2> {{currentYear}} / {{currentMonth}}</h2>
                 <table class="calendar-table">
@@ -23,8 +23,8 @@
                 <input id="month" class="uk-input" placeholder="月を入力してください" v-model="currentMonth">
             </div>
             <div class="forms uk-container uk-container-xsmall">
-                <button @click="calendarBody" type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">カレンダー表示</button>
-
+                <button v-show="show" @click="calendarBody" type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">カレンダー表示</button>
+                <button v-show="reload" @click="doReload" type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">リセットする</button>
             </div>
         </div>
     </div>
@@ -35,6 +35,8 @@
 export default {
     data : function(){
         return {
+            
+            //カレンダー用data
             currentYear : '',
             currentMonth : '',
             startDate : '',
@@ -45,36 +47,40 @@ export default {
             today : new Date(), //本日の情報を取得
             textDate : 1, // 日付(これがカウントアップされます)
             tableBody : '', // テーブルのHTMLを格納する変数
-            row : '',
-            col : '',
-            tr : '<tr>',
-            addClass : '',
-            todayYMFlag : '',
-            textTd : '',
-            td:'',
-            tbody : '',
+
+            //カレンダー表示 初期値
             showCalenderBtn : false,
+
+            //ボタン表示 初期値
+            show : true,
+            reload : false,
         }
     },
 
     methods : {
 
+        // カレンダーを表示 ボタン機能
         calendarBody : function(){
 
+            //ボタンの表示切り替え
+            this.show == true ? this.show = false : this.show = true
+            this.reload == false ? this.reload = true : this.reload = false
+
+            //カレンダーの表示切り替え
             this.showCalenderBtn = true;
 
+            //カレンダー表示 各種設定
             this.todayYMFlag = this.today.getFullYear() === this.currentYear && this.today.getMonth() === this.currentMonth ? true : false; // 本日の年と月が表示されるカレンダーと同じか判定
             this.startDate = new Date(this.currentYear, this.currentMonth -1, 1); // その月の最初の日の情報を取得 
             this.endDate  = new Date(this.currentYear, this.currentMonth, 0); // その月の最後の日の情報を取得 
             this.startDay = this.startDate.getDay();// その月の最初の日の曜日を取得 (日:0,月:1,火:2,水:3,木:4,金:5,土:6)
             this.endDay = this.endDate.getDate();// その月の最後の日を取得
 
-            this.textDate = 1;
-
-            for (var row = 0; row < 6; row++){
+            //カレンダー 値インプット -> html生成
+            for (let row = 0; row < 6; row++){
                 this.tr = '<tr>';
 
-                for (var col = 0; col < 7; col++) {
+                for (let col = 0; col < 7; col++) {
                 
                     if (row === 0 && this.startDay === col){
                         this.textSkip = false;
@@ -82,39 +88,26 @@ export default {
                     if (this.textDate > this.endDay) {
                         this.textSkip = true;
                     }
-                
-                this.addClass = this.todayYMFlag && this.textDate === this.today.getDate() ? 'is-today' : '';
                 this.textTd = this.textSkip ? ' ' : this.textDate++;
-                this.td = '<td class="'+ this.addClass+'">'+ this.textTd+'</td>';
+                this.td = '<td>'+ this.textTd+'</td>';
                 this.tr += this.td;
                 }
                 this.tr += '</tr>';
                 this.tableBody += this.tr;
             }
-        }
-    },//method閉じ
+        }, //calendarBody 閉じ
+
+        //「リセット」ボタン機能
+        doReload : function(){
+            window.location.reload();
+        },
+
+    },//method 閉じ
 }
 </script>
 
 <style scoped>
-    .forms{
-        text-align: center;
-    }
-    .calendar-title {
-        text-align: center;
-        font-family: 'Sriracha', cursive;
-        color: #666666;
-        }
     .calendar-table {
         margin: 0 auto;
-        }
-    td {
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-        text-align: center;
-        line-height: 65px;
-        font-size: 50px;
-        font-family: 'Sriracha', cursive;
         }
 </style>

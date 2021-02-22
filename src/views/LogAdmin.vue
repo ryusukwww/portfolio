@@ -3,17 +3,23 @@
         <!--タイトル-->
         <div class="uk-text-center">
             <img src="@/assets/log.png" width="200" height="200" alt="">
-            <p>学習の記録 : axiosとapi通信して学習の記録を残します。</p>
+            <p>学習の記録を入力してください。</p>
         </div>
-        <!--firebaseデータ表示セクション-->
-        <div v-for="getlog in getlogs" v-bind:key="getlog.fields.date.stringValue">
-            <h3 class="uk-card-title"> {{getlog.fields.addLogTitle.stringValue}}</h3>
-            <p> {{getlog.fields.addLogContent.stringValue}}</p>
-            <p> 記入日 : {{getlog.fields.date.stringValue}}</p>
-            <hr>
-        </div>  
-        <!--パスワード認証フォーム-->
-        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" @click="logIn">記録する(パスワード)</button>
+        <!--ログ入力フォーム-->
+        <div>
+            <form>
+                <fieldset class="uk-fieldset">
+                    <h3>記録する</h3>
+                    <div class="uk-margin">
+                        <input id="logHeader" class="uk-input" type="text" placeholder="タイトルを入力" v-model="addLogTitle">
+                    </div>
+                    <div class="uk-margin">
+                        <textarea id="logText" class="uk-textarea" rows="5" placeholder="学んだことを入力しましょう。" v-model="addLogContent"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" @click="addLog">記録する</button>
+        </div>
     </div>
 </template>
 
@@ -34,8 +40,6 @@ export default {
             month : '',
             day : '',
             date : '',
-
-            UserInput : '',
             
         }
     },
@@ -52,10 +56,6 @@ export default {
 
     methods: {
 
-        logIn : function gate() {
-            this.UserInput = prompt("パスワードを入力して下さい(「logadmin」です。):","");
-            location.href = this.UserInput;
-        },
 
         addLog (){ 
 
@@ -93,7 +93,7 @@ export default {
                 //何もしない
             }
 
-            location.reload();
+            location.href = "/log";
         },
 
     } //methodsの締め
