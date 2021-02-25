@@ -2,7 +2,7 @@
     <div class="uk-container uk-container-large uk-margin uk-margin-top">
         <!--タイトル-->
         <div class="uk-text-center">
-            <img src="@/assets/log.png" width="200" height="200" alt="">
+            <img src="@/assets/logform.png" width="200" height="200" alt="">
             <p>学習の記録を入力してください。</p>
         </div>
         <!--ログ入力フォーム-->
@@ -40,7 +40,8 @@ export default {
             month : '',
             day : '',
             date : '',
-            
+
+            logID : '',
         }
     },
     
@@ -50,12 +51,17 @@ export default {
         )
         .then(response => {
             this.getlogs = response.data.documents;
-            console.log(response.data.documents);
+            console.log(this.getlogs);
         })
     },
 
-    methods: {
+    computed : {
+        idToken(){
+            return this.$store.getters.idToken;
+        }
+    },
 
+    methods: {
 
         addLog (){ 
 
@@ -65,9 +71,12 @@ export default {
             this.day = this.today.getDate();
             this.date = this.year + '/' + this.month + '/' + this.day ; 
 
+            //firebaseのdocumentの配列数をlogIDとして格納
+            this.logID = String(this.getlogs.length + 1);
+
              //LOG記入 -> LOGページ内表示 && firebaseにデータpost
-            if(confirm('タイトル : "' + this.addLogTitle + '"\n' + '本文 : "'+ this.addLogContent + '"\n' + '日時 : "' + this.date + '"\n' + 'こちらでよろしいでしょうか。')){
-                this.logs.push({title : this.addLogTitle , content : this.addLogContent , date : this.date}); //Logを追加した際に、logプロパティにコンテンツを追加 
+            if(confirm('タイトル : "' + this.addLogTitle + '"\n' + '本文 : "'+ this.addLogContent + '"\n' + '日時 : "' + this.date + '"\n' + this.logID + '\n' + 'こちらでよろしいでしょうか。')){
+                this.logs.push({title : this.addLogTitle , content : this.addLogContent , date : this.date , logID : this.logID}); //Logを追加した際に、logプロパティにコンテンツを追加 
                 this.$axios.post('https://firestore.googleapis.com/v1/projects/portfolio-database-9f971/databases/(default)/documents/logs', //LOGに記入されたコンテンツを、axiosでfirebaseに送る
                 {   
                     fields: {
@@ -80,6 +89,9 @@ export default {
                         date: {
                             stringValue: this.date
                             },
+                        logID: {
+                            stringValue: this.logID
+                            },
                         }
                     }
                 )
@@ -89,6 +101,7 @@ export default {
                 this.addLogTitle = "";
                 this.addLogContent = ""; 
                 this.date = ""; 
+                this.logID ="";
             }else{
                 //何もしない
             }

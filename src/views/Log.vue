@@ -6,10 +6,11 @@
             <p>学習の記録 : axiosとapi通信して学習の記録を残します。</p>
         </div>
         <!--firebaseデータ表示セクション-->
-        <div v-for="getlog in getlogs" v-bind:key="getlog.fields.date.stringValue">
+        <div v-for="getlog in getlogs" v-bind:key="getlog.fields.logID.stringValue">
             <h3 class="uk-card-title"> {{getlog.fields.addLogTitle.stringValue}}</h3>
             <p> {{getlog.fields.addLogContent.stringValue}}</p>
             <p> 記入日 : {{getlog.fields.date.stringValue}}</p>
+            <p> ID : {{getlog.fields.logID.stringValue}}</p>
             <hr>
         </div>  
         <!--パスワード認証フォーム-->
@@ -35,8 +36,9 @@ export default {
             day : '',
             date : '',
 
+            //パスワード用変数
             UserInput : '',
-            
+
         }
     },
     
@@ -46,7 +48,8 @@ export default {
         )
         .then(response => {
             this.getlogs = response.data.documents;
-            console.log(response.data.documents);
+            this.getlogs.fields.logID.stringValue = Number(this.getlogs.fields.logID.stringValue);
+            console.log(this.getlogs);
         })
     },
 
@@ -55,45 +58,6 @@ export default {
         logIn : function gate() {
             this.UserInput = prompt("パスワードを入力して下さい(「logadmin」です。):","");
             location.href = this.UserInput;
-        },
-
-        addLog (){ 
-
-            //表記(YYYY/MM/DDDD)を作成
-            this.year = this.today.getFullYear();
-            this.month = this.today.getMonth();
-            this.day = this.today.getDate();
-            this.date = this.year + '/' + this.month + '/' + this.day ; 
-
-             //LOG記入 -> LOGページ内表示 && firebaseにデータpost
-            if(confirm('タイトル : "' + this.addLogTitle + '"\n' + '本文 : "'+ this.addLogContent + '"\n' + '日時 : "' + this.date + '"\n' + 'こちらでよろしいでしょうか。')){
-                this.logs.push({title : this.addLogTitle , content : this.addLogContent , date : this.date}); //Logを追加した際に、logプロパティにコンテンツを追加 
-                this.$axios.post('https://firestore.googleapis.com/v1/projects/portfolio-database-9f971/databases/(default)/documents/logs', //LOGに記入されたコンテンツを、axiosでfirebaseに送る
-                {   
-                    fields: {
-                        addLogTitle: {
-                            stringValue: this.addLogTitle
-                            },
-                        addLogContent: {
-                            stringValue: this.addLogContent
-                            },
-                        date: {
-                            stringValue: this.date
-                            },
-                        }
-                    }
-                )
-                .then(response => {
-                    console.log(response);
-                })
-                this.addLogTitle = "";
-                this.addLogContent = ""; 
-                this.date = ""; 
-            }else{
-                //何もしない
-            }
-
-            location.reload();
         },
 
     } //methodsの締め

@@ -19,7 +19,7 @@
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li><a href="/log">LOG</a></li>
-                                    <li><a href="/Calender">CALENDER</a></li>
+                                    <li><a href="/calender">CALENDER</a></li>
                                 </ul>
                             </div>
                       </li>  
@@ -55,7 +55,7 @@
                       <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
                     <li class ="uk-nav-header">APP</li>
                       <li><a href="/log">LOG</a></li>
-                      <li><a href="/Calender">Clender</a></li> 
+                      <li><a href="/calender">Clender</a></li> 
               </ul>
           </div>
       </div>
