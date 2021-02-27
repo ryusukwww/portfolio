@@ -59,7 +59,7 @@
                       <li v-if="isAuthenticated"><a  @click="logout">LOOUT</a></li>
                     <li class ="uk-nav-header">APP</li>
                       <li><a href="/log">LOG</a></li>
-                      <li><a href="/calender">Clender</a></li> 
+                      <li><a href="/calender">CALENDER</a></li> 
               </ul>
           </div>
       </div>
