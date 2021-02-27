@@ -40,8 +40,6 @@ export default {
             month : '',
             day : '',
             date : '',
-
-            logID : '',
         }
     },
     
@@ -67,12 +65,12 @@ export default {
 
             //表記(YYYY/MM/DDDD)を作成
             this.year = this.today.getFullYear();
-            this.month = this.today.getMonth();
+            this.month = this.today.getMonth()+1;
             this.day = this.today.getDate();
             this.date = this.year + '/' + this.month + '/' + this.day ; 
 
             //firebaseのdocumentの配列数をlogIDとして格納
-            this.logID = String(this.getlogs.length + 1);
+            this.logID = Number(this.getlogs.length + 1);
 
              //LOG記入 -> LOGページ内表示 && firebaseにデータpost
             if(confirm('タイトル : "' + this.addLogTitle + '"\n' + '本文 : "'+ this.addLogContent + '"\n' + '日時 : "' + this.date + '"\n' + this.logID + '\n' + 'こちらでよろしいでしょうか。')){
@@ -88,9 +86,6 @@ export default {
                             },
                         date: {
                             stringValue: this.date
-                            },
-                        logID: {
-                            stringValue: this.logID
                             },
                         }
                     }

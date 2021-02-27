@@ -23,7 +23,7 @@
                         <span class="uk-label uk-margin-small-right">javascript ★★☆☆☆</span>
                         <span class="uk-label uk-margin-small-right">CSSFW ★★★★☆</span>
                         <span class="uk-label uk-margin-small-right">HTML/CSS ★★★☆☆</span>
-                    <p>JavascriptとVue.jsの勉強のためにポートフォリオサイトを作成しました。Vue.jsの基本文法を学びつつ、SPAサイトを作成。Portfolioページにタグソート機能、Logページには学習の記録機能を実装しました。また、バージョン管理をGITを活用して行っています。</p>
+                    <p>JavascriptとVue.jsの勉強のためにポートフォリオサイトを作成しました。Vue.jsの基本文法を学びつつ、SPAサイトを作成。Portfolioページにタグソート機能、Logページには学習の記録機能を実装しました。学習の記録はログイン状態でしか記入できない仕様となっております。また、バージョン管理をGITを活用して行っています。</p>
                     <a href="/" class="uk-button uk-button-text"></a>
                 </div>
             </div>

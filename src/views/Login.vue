@@ -2,7 +2,7 @@
     <div class="uk-container uk-container-large uk-margin uk-margin-top">
         <!--タイトル-->
         <div class="uk-text-center">
-            <img src="@/assets/logform.png" width="200" height="200" alt="">
+            <img src="@/assets/login.png" width="200" height="200" alt="">
             <p>ログイン</p>
         </div>
         <!--アラートメッセージ-->
@@ -18,7 +18,9 @@
             </fieldset>
         </form>
         <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" @click="login">ログイン</button>
-        <p><a href="/resister">新規登録はこちら</a></p>
+        <div class="uk-text-center">
+            <p><a href="/resister">新規登録はこちら</a></p>
+        </div>
         </div>
 </template>
 

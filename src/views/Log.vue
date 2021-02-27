@@ -3,14 +3,13 @@
         <!--タイトル-->
         <div class="uk-text-center">
             <img src="@/assets/log.png" width="200" height="200" alt="">
-            <p>学習の記録 : axiosとapi通信して学習の記録を残します。</p>
+            <p>学習の記録 : firebaseとapi通信して学習の記録を残します。</p>
         </div>
         <!--firebaseデータ表示セクション-->
-        <div v-for="getlog in getlogs" v-bind:key="getlog.fields.logID.stringValue">
+        <div v-for="getlog in getlogs" v-bind:key="getlog.updateTime">
             <h3 class="uk-card-title"> {{getlog.fields.addLogTitle.stringValue}}</h3>
             <p> {{getlog.fields.addLogContent.stringValue}}</p>
             <p> 記入日 : {{getlog.fields.date.stringValue}}</p>
-            <p> ID : {{getlog.fields.logID.stringValue}}</p>
             <hr>
         </div>  
         <!--パスワード認証フォーム-->
@@ -29,6 +28,7 @@ export default {
         
             //firebseからgetしたobjectを入れる配列
             getlogs : [] ,
+            getids : [],
 
             today : new Date,
             year : '',
@@ -39,8 +39,6 @@ export default {
             //パスワード用変数
             UserInput : '',
 
-            logID : '',
-
         }
     },
     
@@ -50,8 +48,14 @@ export default {
         )
         .then(response => {
             this.getlogs = response.data.documents;
+            this.getlogs.sort(function(a,b){
+                if( a.updateTime < b.updateTime ) return 1;
+                if( a.updateTime > b.updateTime ) return -1;
+                return 0;
+        });
             console.log(this.getlogs);
         })
+
     },
 
     methods: {

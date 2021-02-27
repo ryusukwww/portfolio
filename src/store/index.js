@@ -47,6 +47,7 @@ export default new Vuex.Store({
             commit('updateIdToken', null) ;
             localStorage.removeItem('idToken');
             localStorage.removeItem('refreshToken');
+            alert('ログアウトしました。')
             router.replace('login');
         },
         refreshIdToken({commit , dispatch},refreshToken){
@@ -70,7 +71,8 @@ export default new Vuex.Store({
                 returnSecureToken : true
             })
             .then(response => {
-                commit('updateIdToken',response.data.idToken)
+                commit('updateIdToken',response.data.idToken);
+                router.replace('Success')
             });
         }
         },
