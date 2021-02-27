@@ -24,6 +24,8 @@
                             </div>
                       </li>  
                       <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+                      <li v-if="!isAuthenticated"><a href="/login">LOGIN</a></li>
+                      <li v-if="isAuthenticated"><a @click="logout">LOGOUT</a></li>
                   </ul>
               </div>
           </nav>
@@ -53,6 +55,8 @@
                       <li><a href="./work">WORK</a></li>
                       <li><a href="/portfolio">PORTFOLIO</a></li>
                       <li><a href="https://github.com/ryusukwww/portfolio" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+                      <li v-if="!isAuthenticated"><a href="/login">LOGIN</a></li>
+                      <li v-if="isAuthenticated"><a  @click="logout">LOOUT</a></li>
                     <li class ="uk-nav-header">APP</li>
                       <li><a href="/log">LOG</a></li>
                       <li><a href="/calender">Clender</a></li> 
@@ -71,9 +75,29 @@
   </div>
 </template>
 
-<style>
+<script>
+export default {
+    computed : {
+        isAuthenticated(){
+            return this.$store.getters.idToken !== null ; 
+        }
+    },
+    methods : {
+        logout(){
+            this.$store.dispatch('logout');
+        }
+    }
+}
+</script>
+
+<style scoped>
+
     .uk-offcanvas-bar {
     background: #003e7f;
+    }
+
+    .pointer{
+        cursor: pointer;
     }
 
     .v-enter-active, .v-leave-active {

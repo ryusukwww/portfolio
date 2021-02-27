@@ -10,6 +10,7 @@ import Calender from "./views/Calender.vue";
 import NotFound from "./views/NotFound.vue";
 import Login from "./views/Login.vue";
 import Resister from "./views/Resister.vue";
+import Success from "./views/Success.vue";
 import store from './store';
 
 Vue.use(Router);
@@ -59,6 +60,10 @@ export default new Router({
         {
             path:'/resister',
             component: Resister
+        },
+        {
+            path:'/success',
+            component: Success
         },
         { 
             path: '/*',

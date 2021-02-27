@@ -14,7 +14,7 @@
             <hr>
         </div>  
         <!--パスワード認証フォーム-->
-        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" @click="logIn">記録する(パスワード)</button>
+        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" onclick="location.href='/logadmin'">記録する</button>
     </div>
 </template>
 
@@ -39,6 +39,8 @@ export default {
             //パスワード用変数
             UserInput : '',
 
+            logID : '',
+
         }
     },
     
@@ -48,7 +50,6 @@ export default {
         )
         .then(response => {
             this.getlogs = response.data.documents;
-            this.getlogs.fields.logID.stringValue = Number(this.getlogs.fields.logID.stringValue);
             console.log(this.getlogs);
         })
     },

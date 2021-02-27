@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from '../axios-auth';
 import axiosRefresh from '../axios-refresh.js' ; 
+import router from '../router';
 
 Vue.use(Vuex);
 
@@ -24,7 +25,7 @@ export default new Vuex.Store({
             commit('updateIdToken', idToken); 
         },
 
-        login({commit},authData){
+        login({commit,dispatch},authData){
             axios.post('/accounts:signInWithPassword?key=AIzaSyDLYrmb4IwfoWKakEjjFUQonoJQcI1j52U',
             {
                 email : authData.email,
@@ -35,15 +36,31 @@ export default new Vuex.Store({
                 commit('updateIdToken',response.data.idToken);
                 localStorage.setItem('idToken',response.data.idToken);
                 setTimeout(()=>{
-                    axiosRefresh.post('/token?key=AIzaSyDLYrmb4IwfoWKakEjjFUQonoJQcI1j52U',{
-                        grant_type : 'refresh_token',
-                        refresh_token : response.data.refreshToken
-                    }
-                ).then(response =>{
-                    commit('updateIdToken', response.data.id_token);
-                }); 
-                }, response.data.expirensIn * 1000);
-            });
+                    dispatch('refreshIdToken' , response.data.refreshToken);
+                }, 
+                response.data.expirensIn * 1000);
+                router.replace('Success');
+            }
+            );
+        },
+        logout({commit}){
+            commit('updateIdToken', null) ;
+            localStorage.removeItem('idToken');
+            localStorage.removeItem('refreshToken');
+            router.replace('login');
+        },
+        refreshIdToken({commit , dispatch},refreshToken){
+            axiosRefresh
+                .post('/token?key=AIzaSyDLYrmb4IwfoWKakEjjFUQonoJQcI1j52U',{
+                    grant_type : 'refresh_token',
+                    refresh_token : refreshToken
+            }
+        ).then(response =>{
+            commit('updateIdToken', response.data.id_token);
+            setTimeout(()=>{
+                dispatch('refreshIdToken',response.data.refresh_token)
+            },response.data.expires_in * 1000)
+        }); 
         },
         register({commit},authData){
             axios.post('accounts:signUp?key=AIzaSyDLYrmb4IwfoWKakEjjFUQonoJQcI1j52U',

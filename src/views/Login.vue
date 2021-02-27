@@ -5,16 +5,21 @@
             <img src="@/assets/logform.png" width="200" height="200" alt="">
             <p>ログイン</p>
         </div>
-        <!--ログ入力フォーム-->
-        <div class="uk-text-center">
-            <label for="email">Email : </label>
-            <input id= "email" type="email" v-model="email">
-            <br>
-            <label for="pwd">Password : </label>
-            <input id= "pwd" type="pwd" v-model="pwd">
-            <button @click="login">ログイン</button>
+        <!--アラートメッセージ-->
+        <div class="uk-alert-warning" uk-alert v-show="!showAlert">
+            <a class="uk-alert-close" uk-close></a>
+            <p>ログインできませんでした。もう一度やり直してください。</p>
         </div>
-    </div>
+        <!--ログインフォーム-->
+        <form class="uk-margin uk-text-center">
+            <fieldset class="uk-fieldset">
+                <input class="uk-input" id= "email" type="email" v-model="email" placeholder="メールアドレスを入力してください">
+                <input class="uk-input uk-margin-top" id= "pwd" type="pwd" v-model="pwd" placeholder="パスワードを入力してください">
+            </fieldset>
+        </form>
+        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" @click="login">ログイン</button>
+        <p><a href="/resister">新規登録はこちら</a></p>
+        </div>
 </template>
 
 <script>
@@ -24,6 +29,7 @@ export default {
         return {
         email : '',
         pwd : '',
+        showAlert : true,
         }
     },
     
@@ -35,6 +41,7 @@ export default {
             });
             this.email = "";
             this.pwd = "";
+            this.showAlert = false ;
         },
     } //methodsの締め
 }

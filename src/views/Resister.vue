@@ -3,18 +3,17 @@
         <!--タイトル-->
         <div class="uk-text-center">
             <img src="@/assets/logform.png" width="200" height="200" alt="">
-            <p>登録</p>
+            <p>新規登録</p>
         </div>
         <!--ログ入力フォーム-->
-        <div class="uk-text-center">
-            <label for="email">Email : </label>
-            <input id= "email" type="email" v-model="email">
-            <br>
-            <label for="pwd">Password : </label>
-            <input id= "pwd" type="pwd" v-model="password">
-            <button @click="register">登録する</button>
-        </div>
-    </div>
+        <form class="uk-margin uk-text-center">
+            <fieldset class="uk-fieldset">
+                <input class="uk-input" id= "email" type="email" v-model="email" placeholder="メールアドレスを入力してください">
+                <input class="uk-input uk-margin-top" id= "pwd" type="pwd" v-model="pwd" placeholder="パスワードを入力してください">
+            </fieldset>
+        </form>
+        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" @click="register">新規登録する</button>
+      </div>
 </template>
 
 <script>
